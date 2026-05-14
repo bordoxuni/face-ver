@@ -69,16 +69,12 @@ async def verify(id_image: UploadFile = File(...), selfie: UploadFile = File(...
             enforce_detection=False
         )
 
-        confidence = max(0.0, 1 - result["distance"])
+        confidence = 1 - result["distance"]
 
         logger.info(f"[{request_id}] Verification done | Verified: {result['verified']} | Confidence: {confidence:.2f}")
 
         processing_time = int((time.time() - start_time) * 1000)
 
-        
-        # Apply confidence threshold of 0.20
-        result["verified"] = confidence >= 0.20
-        
         return {
             "verified": bool(result["verified"]),
             "confidence": round(confidence, 2),
