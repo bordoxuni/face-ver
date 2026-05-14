@@ -3,3 +3,8 @@ uvicorn[standard]==0.46.0
 python-multipart==0.0.27
 deepface==0.0.92
 pydantic==2.13.3
+pillow
+pillow-heif
+opencv-python-headless
+tensorflow
+tf-keras
